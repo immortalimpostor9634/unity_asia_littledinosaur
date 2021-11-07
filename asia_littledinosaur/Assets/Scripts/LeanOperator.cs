@@ -7,7 +7,7 @@ using UnityEngine;
 /// 3. 比較 > < >= <= ==(等同於) !=(不等於)  (等於一律放右邊，需使用半形符號)
 /// 4. 邏輯 &&(並且) ||(或者) !(顛倒)
 /// </summary>
-public class LeanOp : MonoBehaviour
+public class LeanOperator : MonoBehaviour
 {
     #region 指定運算子
     // 指定運算子特性
