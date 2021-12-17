@@ -513,7 +513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &360024919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -689,6 +689,8 @@ MonoBehaviour:
   interval: 0.3
   goDialogue: {fileID: 1464012063}
   textContent: {fileID: 919305014}
+  goTip: {fileID: 360024918}
+  keyDialogue: 323
 --- !u!4 &584596698
 Transform:
   m_ObjectHideFlags: 0
