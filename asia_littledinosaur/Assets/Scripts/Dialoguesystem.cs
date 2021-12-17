@@ -22,25 +22,31 @@ public class Dialoguesystem : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(TypeEffect());
+        // StartCoroutine(TypeEffect());
     }
 
-    private IEnumerator TypeEffect()
+    /// <summary>
+    /// 打字效果
+    /// </summary>
+    /// <param name = "contents">想要出現在對話系統的對話內容，需使用字串陣列</param>
+    private IEnumerator TypeEffect(string[] contents)
     {
-        string test1 = "哈囉,你好~";
-        string test2 = "今天的天氣真好~";
-        string[] test = { test1,test2 };
+        // 更換名稱快捷鍵 ctrl+RR
+        // 測試用
+        // string test1 = "哈囉,你好~";
+        // string test2 = "今天的天氣真好~";
+        // string[] contents = { test1,test2 };
 
         goDialogue.SetActive(true);   // 顯示對話物件
 
-        for (int j = 0; j < test.Length; j++)   // 遍尋所有對話
+        for (int j = 0; j < contents.Length; j++)   // 遍尋所有對話
         {
             textContent.text = "";    // 清除上次對話內容
             goTip.SetActive(false);   // 隱藏三角形圖示
 
-            for (int i = 0; i < test[j].Length; i++)   // 遍尋對話中的每一個字
+            for (int i = 0; i < contents[j].Length; i++)   // 遍尋對話中的每一個字
             {
-                textContent.text += test[j][i];    // 疊加對話內容文字介面
+                textContent.text += contents[j][i];    // 疊加對話內容文字介面
                 yield return new WaitForSeconds(interval);
             }
 
