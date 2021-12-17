@@ -11,4 +11,7 @@ public class NPC : MonoBehaviour
     public Datadialogue datadialogue;
     [Header("對話系統")]
     public Dialoguesystem Dialoguesystem;
+
+    // 觸發開始事件
+    // 1. 兩個
 }
