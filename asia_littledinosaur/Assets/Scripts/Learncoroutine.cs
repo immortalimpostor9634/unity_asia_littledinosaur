@@ -10,6 +10,7 @@ public class Learncoroutine : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Test());
+        StartCoroutine(TestWithLoop());
     }
 
     // 定義協同程序
@@ -22,5 +23,13 @@ public class Learncoroutine : MonoBehaviour
         yield return new WaitForSeconds(3);
         print("第三段文字");
 
+    }
+    private IEnumerator TestWithLoop()
+    {
+        for (int i = 0; i<10; i++)
+        {
+            print("數字:" + i);
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

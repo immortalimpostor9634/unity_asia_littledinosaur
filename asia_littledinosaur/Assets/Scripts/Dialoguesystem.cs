@@ -23,15 +23,20 @@ public class Dialoguesystem : MonoBehaviour
 
     private IEnumerator TypeEffect()
     {
-        string test = "哈囉,你好~";
+        string test1 = "哈囉,你好~";
+        string test2 = "今天的天氣真好~";
+        string[] test = { test1,test2 };
 
         textContent.text = "";    // 清除上次對話內容
         goDialogue.SetActive(true);   // 顯示對話物件
 
-        for (int i = 0; i < test.Length; i++) 
+        for (int j = 0; j < test.Length; j++) 
         {
-            textContent.text += test[i];    // 疊加對話內容文字介面
-            yield return new WaitForSeconds(interval);
+            for (int i = 0; i < test[j].Length; i++)
+            {
+                textContent.text += test[j][i];    // 疊加對話內容文字介面
+                yield return new WaitForSeconds(interval);
+            }
         }
     }
 }
