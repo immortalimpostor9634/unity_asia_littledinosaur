@@ -12,8 +12,14 @@ public class Enemy : MonoBehaviour
     public float speed = 1.5f;
     [Header("目標圖層")]
     public LayerMask layerTarget;
+    [Header("動畫參數")]
+    public string parameterWalk = "骷髏_走路";
+    [Header("面向目標物件")]
+    public Transform target;
 
+    private float angle = 0;
     private Rigidbody2D rig;
+    private Animator ani;
 
     #endregion
 
@@ -22,6 +28,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
     }
 
     private void OnDrawGizmos()
@@ -50,7 +57,27 @@ public class Enemy : MonoBehaviour
         Collider2D hit = Physics2D.OverlapBox(transform.position +
             transform.TransformDirection(v3Trackoffset), v3TrackSize, 0, layerTarget);
 
-        if (hit) rig.velocity = new Vector2(-speed, rig.velocity.y);
+        if (hit) Move();
+            
+            //rig.velocity = new Vector2(-speed, rig.velocity.y);
+    }
+
+
+    private void Move()
+    {
+        if (target.position.x > transform.position.x)
+        {
+            // 右邊 angle = 180
+        }
+        else if(target.position.x < transform.position.x)
+        {
+            // 左邊 angle = 0
+        }
+
+        angle = target.position.x > transform.position.x ? 180 : 0;
+
+        rig.velocity = new Vector2(-speed, rig.velocity.y);
+        ani.SetBool(parameterWalk, true);
     }
 
     #endregion

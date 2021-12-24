@@ -59,4 +59,22 @@ public class Dialoguesystem : MonoBehaviour
         }
         goDialogue.SetActive(false);    // 隱藏對話物件
     }
+
+    /// <summary>
+    /// 開始對話
+    /// </summary>
+    /// <param name = "contents" >要顯示打字效果的對話內容</param>
+    public void StartDialogue(string[] contents )
+    {
+        StartCoroutine(TypeEffect(contents));
+    }
+
+    /// <summary>
+    /// 停止對話
+    /// </summary>
+    public void StopDialogue()
+    {
+        StopAllCoroutines();             // 停止協程
+        goDialogue.SetActive(false);          // 隱藏對話介面
+    }
 }
