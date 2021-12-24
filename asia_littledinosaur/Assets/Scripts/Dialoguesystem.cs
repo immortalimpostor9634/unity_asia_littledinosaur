@@ -50,13 +50,13 @@ public class Dialoguesystem : MonoBehaviour
                 yield return new WaitForSeconds(interval);
             }
 
-            goTip.SetActive(true);
+            goTip.SetActive(true);         // 顯示對話完成圖示
 
-            while (!Input.GetKeyDown(keyDialogue))
+            while (!Input.GetKeyDown(keyDialogue))   // 當玩家沒有按對話按鍵時持續進行
             {
-                yield return null;
+                yield return null;   // 等待一個 null 影格時間
             }
         }
-        goDialogue.SetActive(false);
+        goDialogue.SetActive(false);    // 隱藏對話物件
     }
 }

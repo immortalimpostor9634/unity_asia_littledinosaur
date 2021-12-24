@@ -13,5 +13,12 @@ public class NPC : MonoBehaviour
     public Dialoguesystem Dialoguesystem;
 
     // 觸發開始事件
-    // 1. 兩個
+    // 1. 兩個物件都要有 Collider2D
+    // 2. 兩個物件要有一個有 Rigidbody2D
+    // 3. 兩個物件要有一個勾 Is Trigger
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        print("有東西進入觸發區域了");
+    }
 }
