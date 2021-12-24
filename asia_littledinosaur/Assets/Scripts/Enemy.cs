@@ -74,10 +74,18 @@ public class Enemy : MonoBehaviour
             // 左邊 angle = 0
         }
 
-        angle = target.position.x > transform.position.x ? 180 : 0;
+        // 三元運算子語法 : 布林值 ? 當布林值 為 true : 當布林值 為 false ;
+        angle = target.position.x > transform.position.x ? 0 : 180;
 
-        rig.velocity = new Vector2(-speed, rig.velocity.y);
+        // 變形.歐拉角度 = Y * 角度
+        transform.eulerAngles = Vector3.up * angle;
+
+        rig.velocity = transform.TransformDirection(new Vector2(speed, rig.velocity.y));
         ani.SetBool(parameterWalk, true);
+
+        // 距離 = 三維向量.距離(A點,B點)
+        float distance = Vector3.Distance(target.position, transform.position);
+        print("與目標的距離:" + distance);
     }
 
     #endregion

@@ -11,14 +11,27 @@ public class NPC : MonoBehaviour
     public Datadialogue datadialogue;
     [Header("對話系統")]
     public Dialoguesystem Dialoguesystem;
+    [Header("觸發對話的對象")]
+    public string target = "小恐龍";
 
     // 觸發開始事件
     // 1. 兩個物件都要有 Collider2D
     // 2. 兩個物件要有一個有 Rigidbody2D
     // 3. 兩個物件要有一個勾 Is Trigger
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.name == target)
+        {
+            Dialoguesystem.StartDialogue(datadialogue.dialogues);
+        }
         print("有東西進入觸發區域了");
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+            if (collision.name == target)
+            {
+                Dialoguesystem.StopDialogue();
+            }
+        
     }
 }
