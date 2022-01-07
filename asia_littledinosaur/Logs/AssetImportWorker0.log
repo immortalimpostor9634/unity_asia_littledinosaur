@@ -3709,3 +3709,20 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 196.758792 seconds.
+  path: Assets/場景/開始畫面.unity
+  artifactKey: Guid(9aa4442fae5e30947a92445bdbbff34c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/場景/開始畫面.unity using Guid(9aa4442fae5e30947a92445bdbbff34c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7762bc49fb265b51c50061000f056aea') in 0.021032 seconds 
+  Import took 0.024009 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 73.685664 seconds.
+  path: Assets/場景/遊戲場景.unity
+  artifactKey: Guid(d2def88a3c574ba4fa57cf62e4c68dcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/場景/遊戲場景.unity using Guid(d2def88a3c574ba4fa57cf62e4c68dcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7400df91a17579141eab5d46c2d1e9ce') in 0.005598 seconds 
+  Import took 0.008645 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
