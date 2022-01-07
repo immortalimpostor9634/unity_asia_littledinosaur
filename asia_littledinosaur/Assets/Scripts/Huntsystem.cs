@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Huntsystem : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class Huntsystem : MonoBehaviour
     public float HP = 100;
     [Header("動畫參數")]
     public string parameterDead = "觸發死亡";
-
+    [Header("死亡事件")]
+    public UnityEvent onDead;
+    
     private float HPmax;
     private Animator ani;
 
@@ -35,6 +38,7 @@ public class Huntsystem : MonoBehaviour
     private void Dead()
     {
         ani.SetTrigger(parameterDead);
+        onDead.Invoke();
     }
 
 }
