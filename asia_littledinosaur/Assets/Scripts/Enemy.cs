@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     [Header("檢查區域大小與位移")]
     public Vector3 v3attackSize = Vector3.one;
     public Vector3 v3attackoffset;
+    [Header("攻擊力"), Range(0, 100)]
+    public float attack = 35;
 
     private float angle = 0;
     private Rigidbody2D rig;
@@ -122,6 +124,8 @@ public class Enemy : MonoBehaviour
             Collider2D hit = Physics2D.OverlapBox(transform.position +
             transform.TransformDirection(v3attackoffset), v3attackSize,0,layerTarget);
             print("攻擊到物件:" + hit.name);
+
+            hit.GetComponent<Huntsystem>().Hunt(attack);
         }
     }
 
