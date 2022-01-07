@@ -246,8 +246,13 @@ MonoBehaviour:
   layerTarget:
     serializedVersion: 2
     m_Bits: 64
-  parameterWalk: "\u9AB7\u9ACF_\u8D70\u8DEF"
+  parameterWalk: "\u958B\u95DC\u8D70\u8DEF"
+  parameterAttack: "\u653B\u64CA\u958B\u95DC"
   target: {fileID: 1123185866}
+  attackDistance: 2
+  attackCD: 1
+  v3attackSize: {x: 1.2, y: 1, z: 1}
+  v3attackoffset: {x: 1, y: -0.2, z: 0}
 --- !u!50 &94677829
 Rigidbody2D:
   serializedVersion: 4
@@ -2360,6 +2365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   datadialogue: {fileID: 11400000, guid: de6c1cb0a30863e4dad72dd2db78d1b3, type: 2}
   Dialoguesystem: {fileID: 584596697}
+  target: "\u5C0F\u6050\u9F8D"
 --- !u!61 &2102289180
 BoxCollider2D:
   m_ObjectHideFlags: 0

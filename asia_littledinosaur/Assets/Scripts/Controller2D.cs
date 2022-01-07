@@ -90,7 +90,7 @@ public class Controller2D : MonoBehaviour
     {
         // h值 指定為 輸入.取得軸向(水平軸) - 水平軸代表左右鍵與AD
         float h = Input.GetAxis("Horizontal");
-        print("玩家左右按鍵:" + h);
+        // print("玩家左右按鍵:" + h);
 
         // 剛體元件.加速度 = 新 二維向量(h 值 = 移動速度，剛體.加速度.垂直);
         rig.velocity = new Vector2(h * speed, rig.velocity.y);

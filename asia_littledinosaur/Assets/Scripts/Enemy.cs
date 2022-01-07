@@ -5,7 +5,7 @@ public class Enemy : MonoBehaviour
 
     #region  欄位
 
-    [Header("檢查追蹤區域大小與位移")]
+    [Header("檢查區域大小與位移")]
     public Vector3 v3TrackSize = Vector3.one;
     public Vector3 v3Trackoffset;
     [Header("移動速度")]
@@ -13,13 +13,22 @@ public class Enemy : MonoBehaviour
     [Header("目標圖層")]
     public LayerMask layerTarget;
     [Header("動畫參數")]
-    public string parameterWalk = "骷髏_走路";
+    public string parameterWalk = "走路開關";
+    public string parameterAttack = "攻擊開關";
     [Header("面向目標物件")]
     public Transform target;
+    [Header("攻擊距離"), Range(0, 5)]
+    public float attackDistance = 1.3f;
+    [Header("攻擊冷卻時間"), Range(0, 10)]
+    public float attackCD = 2.8f;
+    [Header("檢查區域大小與位移")]
+    public Vector3 v3attackSize = Vector3.one;
+    public Vector3 v3attackoffset;
 
     private float angle = 0;
     private Rigidbody2D rig;
     private Animator ani;
+    private float timerAttack;
 
     #endregion
 
@@ -38,6 +47,11 @@ public class Enemy : MonoBehaviour
         // 繪製立方體(中心,尺寸)
         Gizmos.DrawCube(transform.position + 
             transform.TransformDirection(v3Trackoffset), v3TrackSize);
+
+        Gizmos.color = new Color(0, 1, 0, 0.3f);
+        Gizmos.DrawCube(transform.position +
+            transform.TransformDirection(v3attackoffset), v3attackSize);
+
     }
     private void Update()
     {
@@ -85,7 +99,30 @@ public class Enemy : MonoBehaviour
 
         // 距離 = 三維向量.距離(A點,B點)
         float distance = Vector3.Distance(target.position, transform.position);
-        print("與目標的距離:" + distance);
+        // print("與目標的距離:" + distance);
+
+        if (distance <= attackDistance)   // 如果 距離 小於等於 攻擊距離
+        {
+            rig.velocity = Vector3.zero;    // 停止
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+        if (timerAttack < attackCD)   // 如果 計時器 小於 冷卻時間
+        {
+            timerAttack += Time.deltaTime;   // 時間累加 Time.deltaTime 一幀的時間
+        }
+        else
+        {
+            ani.SetTrigger(parameterAttack);   // 如果 計時器 大於等於 冷卻時間 就攻擊
+            timerAttack = 0;     // 計時器 歸零
+
+            Collider2D hit = Physics2D.OverlapBox(transform.position +
+            transform.TransformDirection(v3attackoffset), v3attackSize,0,layerTarget);
+            print("攻擊到物件:" + hit.name);
+        }
     }
 
     #endregion
